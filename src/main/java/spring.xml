@@ -4,12 +4,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- Generates a new 'prototype' or instance everytime -->
-<bean id="helloWorld" scope="prototype" class="com.vaasuri.springxml.HelloWorld">
-  <property name="messenger" ref="messenger"></property>
+<bean id="helloWorld" scope="prototype" class="com.vaasuri.springxml.HelloWorld" autowire="byType">
 </bean>
 
 <!-- Generates a 'singleton' instance -->
-<bean id="messenger" scope="singleton" class="com.vaasuri.springxml.Messenger">
+<bean id="simple-messenger" scope="singleton" class="com.vaasuri.springxml.SimpleMessenger" primary="false">
+  <property name="message" value="Hello World!"></property>
+</bean>
+
+<!-- Generates a 'singleton' instance -->
+<bean id="fancy-messenger" scope="singleton" class="com.vaasuri.springxml.FancyMessenger" primary="true">
   <property name="message" value="Hello World!"></property>
 </bean>
 
